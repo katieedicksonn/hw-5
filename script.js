@@ -5,7 +5,6 @@ currentHour = moment().format("h A");
 console.log(moment().format());
 console.log(moment().format("h A"));
 
-hour = moment().format();
 
 
 // TODO: SHow the time on top of the calender, Using moment.js grab the time, and set the text of the P tag with the id of currentDay to be our time from moment.js
@@ -19,22 +18,26 @@ console.log(currentHour);
 var time = $('.time')
 timeIndex = 0
 
-
+hour = moment().format("HH");
 $("textarea").each(function() {
     var i = $(this).attr('id');   
-    console.log(i) 
-    hour = moment().format();
-    // var textID = parseInt($(this).grabIdWithCode)
+    console.log(typeof(i), typeof(hour)) 
+    var text = localStorage.getItem(i);
+    console.log(text, "hello");
+    if (text) {
+        $(this).val(text) ;
+        
+    }
     if (i === hour) {
 
     $(this).addClass("present");
 
-    } else if (i < hour) {
-     $(this).removeClass("present");
+    } else if (Number(i) < Number(hour)) {
+     console.log('hi')
      $(this).addClass("past");
     }
-    else if  (i > hour){
-     $(this).removeClass("past");
+    else if  (Number(i) > Number(hour)){
+     
      $(this).addClass("future");
     
     }
@@ -43,13 +46,8 @@ $("textarea").each(function() {
 $('.container').on("click", ".saveBtn", function(){
     var myTextArea = $(this).siblings('textarea');
     console.log(myTextArea.val())
+    console.log(myTextArea.attr('id'))
+    localStorage.setItem(myTextArea.attr("id"),myTextArea.val()) 
 })
 
-localStorage.setItem("test", "My first note" )
-localStorage.setItem("test1", "my second not" )
-var text1FromLocalStorage= localStorage.getItem("test")
-$("#9").text(text1FromLocalStorage)
-
-var text2FromLocalStorage= localStorage.getItem("test1")
-$("#10").text(text2FromLocalStorage) 
 
