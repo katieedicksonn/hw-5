@@ -1,0 +1,16 @@
+
+ build html with bootstrap
+ im going to need 10 rows with three col in them one for time one for input and one for save button 
+grab current hours for the scheduler moment.hours
+store in input box the numeric value stored in that box so im going to have to set a interval timer that updates every hours
+i need color coded hours for past present and future 
+loop through input box - look at numeric value
+if statement if current time > row time = add class past 
+else = present 
+on click event for save nutton and event on that class 
+THIS gives you the element you clikced on and the DOM triversal for which input matches 
+
+
+i will need to svae to local storeage
+
+$("#mybtn").on("click)
